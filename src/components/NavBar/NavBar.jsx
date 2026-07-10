@@ -17,6 +17,12 @@ export default function NavBar({ activeTab, onTabChange }) {
         >
           排行榜
         </button>
+        <button
+          className={`${styles.tab} ${activeTab === 'intro' ? styles.active : ''}`}
+          onClick={() => onTabChange('intro')}
+        >
+          游戏简介
+        </button>
       </div>
     </nav>
   );

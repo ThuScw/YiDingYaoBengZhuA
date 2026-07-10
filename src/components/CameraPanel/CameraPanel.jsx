@@ -1,8 +1,9 @@
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useRef, useCallback, useState } from 'react';
 import Webcam from 'react-webcam';
 import CountdownTimer from '../CountdownTimer/CountdownTimer';
 import DebugOverlay from '../DebugOverlay/DebugOverlay';
 import StatusBar from '../StatusBar/StatusBar';
+import CameraPermissionGuide from './CameraPermissionGuide';
 import styles from './CameraPanel.module.css';
 
 export default function CameraPanel({
@@ -22,6 +23,7 @@ export default function CameraPanel({
 }) {
   const frameIdRef = useRef(null);
   const loopStartedRef = useRef(false);
+  const [cameraAllowed, setCameraAllowed] = useState(false);
 
   const onUserMedia = useCallback(() => {
     if (loopStartedRef.current) return;
@@ -71,6 +73,9 @@ export default function CameraPanel({
       </div>
 
       <div className={styles.cameraArea}>
+        {!cameraAllowed ? (
+          <CameraPermissionGuide onAllow={() => setCameraAllowed(true)} />
+        ) : (
         <div className={`${styles.webcamWrapper} ${isFail ? styles.fail : isPlaying ? styles.playing : ''}`}>
           <Webcam
             audio={false}
@@ -120,6 +125,7 @@ export default function CameraPanel({
             </button>
           )}
         </div>
+        )}
       </div>
     </div>
   );

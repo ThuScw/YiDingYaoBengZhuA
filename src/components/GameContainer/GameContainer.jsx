@@ -11,6 +11,7 @@ import ResultScreen from '../ResultScreen/ResultScreen';
 import VictoryScreen from '../VictoryScreen/VictoryScreen';
 import NameEntry from '../NameEntry/NameEntry';
 import Leaderboard from '../Leaderboard/Leaderboard';
+import GameIntro from '../GameIntro/GameIntro';
 import styles from './GameContainer.module.css';
 
 export default function GameContainer() {
@@ -96,8 +97,8 @@ export default function GameContainer() {
       <div className={styles.app}>
         <NavBar activeTab={activeTab} onTabChange={setActiveTab} />
 
-        <div className={styles.layout}>
-          {showGame ? (
+        <div className={`${styles.layout} ${showGame ? '' : styles.fullWidth}`}>
+          {showGame && (
             <>
               <CameraPanel
                 webcamRef={webcamRef}
@@ -149,7 +150,9 @@ export default function GameContainer() {
                 />
               )}
             </>
-          ) : (
+          )}
+
+          {activeTab === 'leaderboard' && (
             <Leaderboard
               uid={uid}
               leaderboard={leaderboard}
@@ -160,6 +163,8 @@ export default function GameContainer() {
               embedded
             />
           )}
+
+          {activeTab === 'intro' && <GameIntro />}
         </div>
       </div>
     </>

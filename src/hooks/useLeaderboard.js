@@ -1,6 +1,17 @@
 import { useState, useCallback } from 'react';
 import { getSupabase } from '../lib/supabase.js';
 
+// 计算当前周的起始时间（周一 00:00:00）
+function getWeekStart() {
+  const now = new Date();
+  const day = now.getDay(); // 0=周日, 1=周一, ..., 6=周六
+  const diff = day === 0 ? 6 : day - 1; // 距离周一的天数
+  const monday = new Date(now);
+  monday.setDate(now.getDate() - diff);
+  monday.setHours(0, 0, 0, 0);
+  return monday;
+}
+
 export function useLeaderboard() {
   const [leaderboard, setLeaderboard] = useState([]);
   const [userRank, setUserRank] = useState(null);
@@ -12,31 +23,26 @@ export function useLeaderboard() {
   const submitScore = useCallback(async (uid, streak, totalMaterials) => {
     if (!supabase || !uid || streak === 0) return { error: null };
 
-    // 先查询该用户的最高分记录
+    const weekStart = getWeekStart();
+
+    // 查询该用户本周的最高分
     const { data: existing } = await supabase
       .from('scores')
-      .select('id, streak')
+      .select('streak')
       .eq('uid', uid)
+      .gte('created_at', weekStart.toISOString())
       .order('streak', { ascending: false })
       .limit(1);
 
     const currentBest = existing?.[0]?.streak ?? null;
 
-    if (currentBest !== null && streak > currentBest) {
-      // 新高分：更新已有的最高分记录（避免 INSERT 被 RLS 策略拦截）
-      const { error } = await supabase
-        .from('scores')
-        .update({ streak, total_materials: totalMaterials })
-        .eq('id', existing[0].id);
-      return { error };
-    }
-
-    if (currentBest !== null) {
-      // 未超越最高分：不插入，直接返回
+    // 未超越本周最高分时不插入，避免数据膨胀
+    if (currentBest !== null && streak <= currentBest) {
       return { error: null };
     }
 
-    // 用户无历史记录：插入首条
+    // 新高分或首次提交：INSERT 新记录（RLS 仅允许 INSERT，不支持 UPDATE）
+    // 排行榜查询时会按 uid 去重取最高分，旧记录保留不影响显示
     const { error } = await supabase
       .from('scores')
       .insert({ uid, streak, total_materials: totalMaterials });
@@ -53,21 +59,26 @@ export function useLeaderboard() {
 
     setLoading(true);
 
-    // 获取该用户的最高分
+    const weekStart = getWeekStart();
+    const weekStartISO = weekStart.toISOString();
+
+    // 获取该用户本周的最高分
     const { data: userData } = await supabase
       .from('scores')
       .select('streak')
       .eq('uid', uid)
+      .gte('created_at', weekStartISO)
       .order('streak', { ascending: false })
       .limit(1);
 
     const best = userData?.[0]?.streak ?? null;
     setUserBest(best);
 
-    // 获取 Top 20（每人取最高分）
+    // 获取本周 Top 20（每人取最高分）
     const { data: topData } = await supabase
       .from('scores')
       .select('uid, streak, total_materials, created_at')
+      .gte('created_at', weekStartISO)
       .order('streak', { ascending: false })
       .order('created_at', { ascending: true })
       .limit(100);
@@ -84,16 +95,17 @@ export function useLeaderboard() {
     }
     setLeaderboard(deduped);
 
-    // 计算当前用户排名
+    // 计算当前用户排名（仅本周数据）
     if (best !== null) {
       const rankIdx = deduped.findIndex(r => r.uid === uid);
       if (rankIdx !== -1) {
         setUserRank(rankIdx + 1);
       } else {
-        // 用户不在 top 20，统计比 ta 分数高的人数
+        // 用户不在 top 20，统计本周比 ta 分数高的人数
         const { count } = await supabase
           .from('scores')
           .select('*', { count: 'exact', head: true })
+          .gte('created_at', weekStartISO)
           .gt('streak', best);
         setUserRank((count ?? 0) + 1);
       }

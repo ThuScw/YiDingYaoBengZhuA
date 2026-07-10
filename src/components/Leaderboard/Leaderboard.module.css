@@ -95,10 +95,10 @@
 .listHeader {
   display: flex;
   align-items: center;
-  padding: 8px 0;
+  padding: 10px 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   color: var(--color-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -111,10 +111,10 @@
 .row {
   display: flex;
   align-items: center;
-  padding: 10px 0;
+  padding: 12px 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.03);
   font-family: var(--font-body);
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   color: var(--color-text-primary);
   transition: background var(--transition-fast);
 }
@@ -133,40 +133,53 @@
 }
 
 .colRank {
-  width: 36px;
+  flex: 1;
   font-family: var(--font-mono);
   font-weight: 600;
   text-align: center;
-  flex-shrink: 0;
+  font-size: 0.95rem;
 }
 
-.rank1 { color: #f59e0b; font-size: 1.1rem; }
-.rank2 { color: #94a3b8; font-size: 1rem; }
-.rank3 { color: #d97706; font-size: 0.95rem; }
+.rank1 {
+  color: #f59e0b;
+  font-size: 1.2rem;
+  text-shadow: 0 0 8px rgba(245, 158, 11, 0.4);
+}
+.rank2 {
+  color: #64748b;
+  font-size: 1.15rem;
+  text-shadow: 0 0 6px rgba(100, 116, 139, 0.3);
+}
+.rank3 {
+  color: #d97706;
+  font-size: 1.1rem;
+  text-shadow: 0 0 6px rgba(217, 119, 6, 0.3);
+}
 
 .colName {
-  flex: 1;
+  flex: 2;
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  text-align: center;
 }
 
 .colStreak {
-  width: 48px;
+  flex: 1;
   text-align: center;
-  font-family: var(--font-mono);
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
   color: var(--color-accent-coral);
 }
 
 .colTime {
-  width: 72px;
-  text-align: right;
+  flex: 1.5;
+  text-align: center;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.82rem;
   color: var(--color-text-muted);
-  flex-shrink: 0;
 }
 
 .mySection {

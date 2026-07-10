@@ -32,7 +32,7 @@ export default function VictoryScreen({ totalCount, bestStreak, onRestart, onLea
           <br />
           最高连胜：<span className={styles.count}>{bestStreak}</span> 局
           <br />
-          你就是面瘫之王！
+          你就是面瘫之王！超级无敌老绷带！绷出了个绷样！
         </p>
 
         <div className={styles.actions}>

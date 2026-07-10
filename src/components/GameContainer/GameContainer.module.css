@@ -35,6 +35,11 @@
   max-width: 65%;
 }
 
+.fullWidth > :first-child {
+  flex: 1 1 100%;
+  max-width: 100%;
+}
+
 @media (max-width: 768px) {
   .layout {
     flex-direction: column;

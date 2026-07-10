@@ -25,7 +25,7 @@ export default function Leaderboard({
   const panel = (
     <div className={`${styles.panel} ${embedded ? styles.embeddedPanel : ''}`}>
       <div className={styles.header}>
-        <h2 className={styles.title}>🏆 排行榜</h2>
+        <h2 className={styles.title}>🏆 本周排行</h2>
         <div className={styles.headerActions}>
           <button className={styles.refreshBtn} onClick={onRefresh} disabled={loading} aria-label="刷新">
             🔄

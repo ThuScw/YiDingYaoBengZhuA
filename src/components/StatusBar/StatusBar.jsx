@@ -10,7 +10,7 @@ export default function StatusBar({ streak, remainingCount, totalCount, visible 
       {streak > 0 && (
         <div className={styles.streak}>
           <span className={styles.streakIcon}>🔥</span>
-          <span className={styles.streakText}>连续 {streak} 局</span>
+          <span className={styles.streakText}>连绷 {streak} 局</span>
         </div>
       )}
 
