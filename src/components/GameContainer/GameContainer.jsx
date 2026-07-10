@@ -54,7 +54,11 @@ export default function GameContainer() {
   useEffect(() => {
     if ((gameState === 'victory' || gameState === 'fail') && hasUid && !submitted && bestStreak > 0) {
       setSubmitted(true);
-      submitScore(uid, bestStreak, totalCount);
+      submitScore(uid, bestStreak, totalCount).then(({ error }) => {
+        if (error) {
+          setSubmitted(false);
+        }
+      });
     }
     if (gameState === 'idle') {
       setSubmitted(false);
@@ -64,7 +68,10 @@ export default function GameContainer() {
   const canStart = gameState === 'idle' || gameState === 'fail' || gameState === 'victory';
 
   const handleStart = useCallback(() => {
-    if (canStart) startGame();
+    if (canStart) {
+      setSubmitted(false);
+      startGame();
+    }
   }, [canStart, startGame]);
 
   const handleAdvance = useCallback(() => {

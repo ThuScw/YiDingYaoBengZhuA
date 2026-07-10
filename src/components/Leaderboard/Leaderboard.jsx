@@ -82,9 +82,9 @@ export default function Leaderboard({
         </div>
       )}
 
-      {userBest === null && !loading && (
+      {userBest === null && !loading && leaderboard.length > 0 && (
         <div className={styles.noRecord}>
-          你还没有记录，完成一局游戏后自动上榜！
+          完成一局游戏后，你的成绩会自动显示在这里！
         </div>
       )}
     </div>

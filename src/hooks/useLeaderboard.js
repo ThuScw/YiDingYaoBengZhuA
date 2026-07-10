@@ -23,30 +23,43 @@ export function useLeaderboard() {
   const submitScore = useCallback(async (uid, streak, totalMaterials) => {
     if (!supabase || !uid || streak === 0) return { error: null };
 
-    const weekStart = getWeekStart();
+    try {
+      const weekStart = getWeekStart();
 
-    // 查询该用户本周的最高分
-    const { data: existing } = await supabase
-      .from('scores')
-      .select('streak')
-      .eq('uid', uid)
-      .gte('created_at', weekStart.toISOString())
-      .order('streak', { ascending: false })
-      .limit(1);
+      // 查询该用户本周的最高分
+      const { data: existing, error: selectError } = await supabase
+        .from('scores')
+        .select('streak')
+        .eq('uid', uid)
+        .gte('created_at', weekStart.toISOString())
+        .order('streak', { ascending: false })
+        .limit(1);
 
-    const currentBest = existing?.[0]?.streak ?? null;
+      if (selectError) {
+        console.error('[submitScore] select failed:', selectError);
+      }
 
-    // 未超越本周最高分时不插入，避免数据膨胀
-    if (currentBest !== null && streak <= currentBest) {
-      return { error: null };
+      const currentBest = existing?.[0]?.streak ?? null;
+
+      // 未超越本周最高分时不插入，避免数据膨胀
+      if (currentBest !== null && streak <= currentBest) {
+        return { error: null };
+      }
+
+      // 新高分或首次提交：INSERT 新记录（RLS 仅允许 INSERT，不支持 UPDATE）
+      // 排行榜查询时会按 uid 去重取最高分，旧记录保留不影响显示
+      const { error } = await supabase
+        .from('scores')
+        .insert({ uid, streak, total_materials: totalMaterials });
+
+      if (error) {
+        console.error('[submitScore] insert failed:', error);
+      }
+      return { error };
+    } catch (err) {
+      console.error('[submitScore] exception:', err);
+      return { error: err };
     }
-
-    // 新高分或首次提交：INSERT 新记录（RLS 仅允许 INSERT，不支持 UPDATE）
-    // 排行榜查询时会按 uid 去重取最高分，旧记录保留不影响显示
-    const { error } = await supabase
-      .from('scores')
-      .insert({ uid, streak, total_materials: totalMaterials });
-    return { error };
   }, [supabase]);
 
   const fetchLeaderboard = useCallback(async (uid) => {
