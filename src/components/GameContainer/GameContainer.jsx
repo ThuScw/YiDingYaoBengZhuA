@@ -49,7 +49,7 @@ export default function GameContainer() {
     remainingCount,
     startGame,
     advanceRound,
-  } = useGameState({ webcamRef, canvasRef, cameraReady: cameraAllowed && !isLoading });
+  } = useGameState({ webcamRef, canvasRef, cameraAllowed });
 
   useEffect(() => {
     if ((gameState === 'victory' || gameState === 'fail') && hasUid && !submitted && bestStreak > 0) {

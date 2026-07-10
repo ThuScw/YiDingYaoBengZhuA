@@ -3,7 +3,7 @@ import { useMaterials } from './useMaterials.js';
 import { useTimer } from './useTimer.js';
 import { useFaceDetection } from './useFaceDetection.js';
 
-export function useGameState({ webcamRef, canvasRef, cameraReady }) {
+export function useGameState({ webcamRef, canvasRef, cameraAllowed }) {
   const [gameState, setGameState] = useState('idle');
   const [currentMaterial, setCurrentMaterial] = useState(null);
   const [resultMessage, setResultMessage] = useState('');
@@ -33,6 +33,8 @@ export function useGameState({ webcamRef, canvasRef, cameraReady }) {
       onSmileBreak: handleSmileBreak,
       enabled: true,
     });
+
+  const cameraReady = cameraAllowed && !isLoading;
 
   const isTimerRunning = gameState === 'playing';
   const { timeLeft, isTimeUp, reset: resetTimer } = useTimer({

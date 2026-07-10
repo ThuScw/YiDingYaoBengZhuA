@@ -23,7 +23,11 @@
       "Bash(python *)",
       "Bash(npm install *)",
       "Bash(grep -E \"\\\\.\\(js|es\\\\.js\\)$\")",
-      "Bash(npm uninstall *)"
+      "Bash(npm uninstall *)",
+      "Bash(curl -s http://localhost:5173)",
+      "Bash(curl -s http://localhost:4173)",
+      "mcp__playwright__browser_click",
+      "mcp__playwright__browser_wait_for"
     ]
   }
 }
