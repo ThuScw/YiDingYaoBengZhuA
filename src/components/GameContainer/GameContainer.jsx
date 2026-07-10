@@ -31,6 +31,7 @@ export default function GameContainer() {
 
   const [activeTab, setActiveTab] = useState('game');
   const [submitted, setSubmitted] = useState(false);
+  const [cameraAllowed, setCameraAllowed] = useState(false);
 
   const {
     gameState,
@@ -48,7 +49,7 @@ export default function GameContainer() {
     remainingCount,
     startGame,
     advanceRound,
-  } = useGameState({ webcamRef, canvasRef });
+  } = useGameState({ webcamRef, canvasRef, cameraReady: cameraAllowed && !isLoading });
 
   useEffect(() => {
     if ((gameState === 'victory' || gameState === 'fail') && hasUid && !submitted && bestStreak > 0) {
@@ -112,6 +113,8 @@ export default function GameContainer() {
                 streak={streak}
                 remainingCount={remainingCount}
                 totalCount={totalCount}
+                cameraAllowed={cameraAllowed}
+                onCameraAllowed={setCameraAllowed}
                 onStart={handleStart}
                 onAdvance={handleAdvance}
               />

@@ -3,7 +3,7 @@ import { useMaterials } from './useMaterials.js';
 import { useTimer } from './useTimer.js';
 import { useFaceDetection } from './useFaceDetection.js';
 
-export function useGameState({ webcamRef, canvasRef }) {
+export function useGameState({ webcamRef, canvasRef, cameraReady }) {
   const [gameState, setGameState] = useState('idle');
   const [currentMaterial, setCurrentMaterial] = useState(null);
   const [resultMessage, setResultMessage] = useState('');
@@ -47,13 +47,21 @@ export function useGameState({ webcamRef, canvasRef }) {
       resetTimer();
       setVideoError(false);
       setGameState('preparing');
-
-      setTimeout(() => {
-        setGameState('playing');
-      }, 1000);
     },
     [resetCounters, resetTimer],
   );
+
+  // 等待摄像头就绪后再从 preparing 进入 playing，避免计时器在权限/加载阶段空转
+  useEffect(() => {
+    if (gameState !== 'preparing') return;
+    if (!cameraReady) return;
+
+    const timer = setTimeout(() => {
+      setGameState('playing');
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [gameState, cameraReady]);
 
   const startNextRound = useCallback(() => {
     const remaining = getRemaining();
