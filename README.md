@@ -1,17 +1,39 @@
-# React + Vite
+# 绷住大挑战
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+**你憋笑有多强？让 AI 来验一验。**
 
-Currently, two official plugins are available:
+打开摄像头，AI 会实时追踪你的面部表情。屏幕轮番放出各种搞笑素材——段子、表情包、短视频。你要做的就是在 7 秒内绷住不笑。一旦嘴角上扬被 AI 抓到，当场判负。最终成绩会上传全球排行榜。
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 怎么玩
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. 允许摄像头权限
+2. 输入你的昵称（或让系统帮你起一个）
+3. 点击「开始挑战」或按下空格键
+4. 看搞笑内容的同时，拼命绷住你的嘴角
+5. 7 秒不笑 → 恭喜过关，进入下一轮
+6. 坚持不住笑了 → 游戏结束，本轮连胜数上传排行榜
+7. 扛过全部素材不笑 → 你就是绷王
 
-## Expanding the Oxlint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
-"# YiDingYaoBengZhuA" 
+## 笑点来自哪里
+
+- **搞笑段子** — 冷笑话、谐音梗、猝不及防的反转
+- **表情包** — 经典搞笑图片，越看越破防
+- **短视频** — 魔性剪辑，忍住不笑真的很难
+
+---
+
+## 它是怎么认出你在笑的
+
+AI 通过摄像头捕捉你面部的 468 个关键点，重点盯着嘴唇、嘴角和下巴的相对位置。当你的嘴角开始不受控制地往上翘时，微笑指数就会飙升——持续超过一定阈值，系统就判定你笑了。
+
+你可以在画面中实时看到自己的「微笑指数」，越绿越安全，越红越危险。
+
+---
+
+## 排行榜
+
+游戏结束后，你这一局的最长连胜数会提交到全球排行榜。看看你和全世界比，谁才是真正的扑克脸之王。
