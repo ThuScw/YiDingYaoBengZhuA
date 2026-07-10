@@ -1,0 +1,20 @@
+- generic [ref=f1e3]:
+  - generic [ref=f1e5]:
+    - generic "面部识别初始化中": 面部识别初始化中...
+    - generic [ref=f1e7]:
+      - generic [ref=f1e8]: 微笑指数
+      - generic [ref=f1e9]: "0"
+    - button "开始挑战" [ref=f1e10] [cursor=pointer]:
+      - generic [ref=f1e11]: 开始挑战
+      - generic [ref=f1e12]: Space
+  - generic [ref=f1e14]:
+    - generic [ref=f1e15]: AI 面部识别
+    - heading "绷住大挑战" [level=1] [ref=f1e16]
+    - paragraph [ref=f1e17]:
+      - text: 面对搞笑内容保持不笑
+      - text: 坚持 7秒 即为胜利
+    - button "开始挑战" [ref=f1e18] [cursor=pointer]:
+      - generic [ref=f1e19]: 开始挑战
+      - generic [ref=f1e20]: Space
+    - paragraph [ref=f1e21]: 或按空格键开始
+    - button "排行榜" [ref=f1e22] [cursor=pointer]: 🏆 排行榜

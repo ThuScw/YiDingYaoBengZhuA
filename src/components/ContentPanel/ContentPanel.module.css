@@ -1,0 +1,169 @@
+.panel {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    180deg,
+    #fffaf7 0%,
+    #fef5f0 50%,
+    #fdf0ea 100%
+  );
+  padding: var(--space-5);
+  animation: slideUp 0.5s var(--ease-out-expo);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  width: 100%;
+  max-width: 680px;
+  padding: var(--space-6);
+  border-radius: var(--radius-xl);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  animation: bounceIn 0.5s var(--ease-bounce);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.titleAccent {
+  background: linear-gradient(135deg, var(--color-accent-coral), var(--color-accent-peach), var(--color-accent-lavender));
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 4s ease infinite;
+}
+
+.mediaBox {
+  width: 100%;
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-5);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.5);
+  border: 2px dashed rgba(255, 180, 160, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.mediaContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.textContent {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  line-height: 1.75;
+  color: var(--color-text-primary);
+  text-align: center;
+  white-space: pre-line;
+  padding: var(--space-4);
+}
+
+.media {
+  max-width: 100%;
+  max-height: 320px;
+  border-radius: var(--radius-md);
+  object-fit: contain;
+}
+
+.errorText {
+  font-size: 1rem;
+  color: var(--color-danger);
+  text-align: center;
+}
+
+.preparingOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  background: rgba(255, 245, 240, 0.85);
+  backdrop-filter: blur(6px);
+  border-radius: var(--radius-lg);
+  z-index: var(--z-overlay);
+  animation: fadeIn 0.3s ease-out;
+}
+
+.preparingEmoji {
+  font-size: 3rem;
+  animation: float 2s ease-in-out infinite;
+}
+
+.preparingText {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+/* ── Advance hint (7s passed, non-blocking) ── */
+.advanceHint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  background: rgba(99, 230, 190, 0.1);
+  border: 1px solid rgba(99, 230, 190, 0.25);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: var(--color-success);
+  animation: fadeIn 0.4s ease-out;
+}
+
+.advanceHintIcon {
+  font-size: 0.9rem;
+}
+
+.placeholder {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .panel {
+    padding: var(--space-4);
+  }
+
+  .card {
+    padding: var(--space-5);
+    gap: var(--space-3);
+  }
+
+  .mediaBox {
+    min-height: 200px;
+    padding: var(--space-4);
+  }
+
+  .title {
+    font-size: 1.35rem;
+  }
+}

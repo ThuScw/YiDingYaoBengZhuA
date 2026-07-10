@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp \"C:/Users/86134/Desktop/AI-zone/Bengzhu/bengzhu-challenge/public/resource/text/\"*.txt \"C:/Users/86134/Desktop/AI-zone/Bengzhu/bengzhu-challenge/src/resources/text/\")",
+      "Bash(cp \"C:/Users/86134/Desktop/AI-zone/Bengzhu/bengzhu-challenge/public/resource/image/\"*.png \"C:/Users/86134/Desktop/AI-zone/Bengzhu/bengzhu-challenge/src/resources/image/\")",
+      "Bash(cp \"C:/Users/86134/Desktop/AI-zone/Bengzhu/bengzhu-challenge/public/resource/video/\"*.mp4 \"C:/Users/86134/Desktop/AI-zone/Bengzhu/bengzhu-challenge/src/resources/video/\")",
+      "Bash(npx vite *)",
+      "Bash(npm run *)",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_console_messages",
+      "mcp__playwright__browser_take_screenshot",
+      "mcp__playwright__browser_snapshot",
+      "mcp__playwright__browser_evaluate",
+      "mcp__playwright__browser_tabs",
+      "WebFetch(domain:reactbits.dev)",
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:deepwiki.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(bash *)",
+      "WebFetch(domain:r.jina.ai)",
+      "Bash(curl -sL --max-time 15 \"https://reactbits.dev\")",
+      "Bash(python *)",
+      "Bash(npm install *)",
+      "Bash(grep -E \"\\\\.\\(js|es\\\\.js\\)$\")",
+      "Bash(npm uninstall *)"
+    ]
+  }
+}

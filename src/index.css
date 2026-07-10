@@ -1,0 +1,24 @@
+@import './styles/reset.css';
+@import './styles/tokens.css';
+@import './styles/animations.css';
+
+body {
+  font-family: var(--font-body);
+  background: linear-gradient(
+    160deg,
+    #fff5f5 0%,
+    #fff0e8 25%,
+    #fef5e7 50%,
+    #fce4ec 75%,
+    #fff5f5 100%
+  );
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  color: var(--color-text-primary);
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+}

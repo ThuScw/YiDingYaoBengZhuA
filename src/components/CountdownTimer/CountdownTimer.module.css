@@ -1,0 +1,31 @@
+.timer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scaleX(-1);
+  pointer-events: none;
+  z-index: var(--z-panel);
+}
+
+.number {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 8rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--color-accent-coral);
+  text-shadow: 0 0 28px rgba(255, 107, 138, 0.3), 0 0 56px rgba(255, 169, 77, 0.15);
+  animation: countdownPop 0.35s var(--ease-out-back);
+}
+
+.urgent .number {
+  color: var(--color-danger);
+  text-shadow: 0 0 24px rgba(255, 135, 135, 0.4), 0 0 48px rgba(255, 135, 135, 0.2);
+  animation: countdownPop 0.3s var(--ease-out-back), countdownUrgent 0.5s ease-in-out infinite;
+}
+
+@media (max-width: 768px) {
+  .number {
+    font-size: 5rem;
+  }
+}

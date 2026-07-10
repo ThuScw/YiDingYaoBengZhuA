@@ -1,0 +1,81 @@
+:root {
+  /* ── Palette ── */
+  --color-bg-deep: #fff5f5;
+  --color-bg-primary: #fffaf7;
+  --color-bg-secondary: #fff8f6;
+  --color-bg-panel: rgba(255, 255, 255, 0.75);
+  --color-bg-card: rgba(255, 255, 255, 0.65);
+  --color-bg-overlay: rgba(255, 245, 240, 0.85);
+
+  --color-accent-coral: #ff6b8a;
+  --color-accent-coral-dim: rgba(255, 107, 138, 0.12);
+  --color-accent-peach: #ffa94d;
+  --color-accent-peach-dim: rgba(255, 169, 77, 0.12);
+  --color-accent-lavender: #b197fc;
+  --color-accent-lavender-dim: rgba(177, 151, 252, 0.12);
+  --color-accent-mint: #63e6be;
+  --color-accent-mint-dim: rgba(99, 230, 190, 0.12);
+
+  --color-success: #51cf66;
+  --color-success-dim: rgba(81, 207, 102, 0.12);
+  --color-danger: #ff8787;
+  --color-danger-dim: rgba(255, 135, 135, 0.12);
+  --color-warning: #ffa94d;
+
+  --color-text-primary: #4a3728;
+  --color-text-secondary: #8b7355;
+  --color-text-muted: #b8a99a;
+  --color-text-inverse: #ffffff;
+
+  /* ── Glass ── */
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 180, 160, 0.25);
+  --glass-blur: 18px;
+  --glass-shadow: 0 4px 24px rgba(255, 150, 120, 0.1), 0 1px 4px rgba(200, 150, 130, 0.08);
+
+  /* ── Glow ── */
+  --glow-coral: 0 0 16px rgba(255, 107, 138, 0.25), 0 0 48px rgba(255, 107, 138, 0.1);
+  --glow-coral-strong: 0 0 12px rgba(255, 107, 138, 0.4), 0 0 36px rgba(255, 107, 138, 0.2), 0 0 72px rgba(255, 107, 138, 0.08);
+  --glow-peach: 0 0 16px rgba(255, 169, 77, 0.25), 0 0 48px rgba(255, 169, 77, 0.1);
+  --glow-lavender: 0 0 16px rgba(177, 151, 252, 0.25), 0 0 48px rgba(177, 151, 252, 0.1);
+  --glow-danger: 0 0 14px rgba(255, 135, 135, 0.3), 0 0 42px rgba(255, 135, 135, 0.12);
+
+  /* ── Typography ── */
+  --font-display: 'PingFang SC', 'Microsoft YaHei', 'HarmonyOS Sans', 'Noto Sans SC', sans-serif;
+  --font-body: 'PingFang SC', 'Microsoft YaHei', 'HarmonyOS Sans', 'Noto Sans SC', sans-serif;
+  --font-mono: 'Cascadia Code', 'Fira Code', 'Consolas', 'Monaco', monospace;
+
+  /* ── Spacing ── */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  /* ── Radius ── */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-full: 9999px;
+
+  /* ── Transitions ── */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.8, 0.64, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --transition-fast: 150ms ease;
+  --transition-normal: 300ms var(--ease-out-expo);
+  --transition-slow: 500ms var(--ease-out-expo);
+
+  /* ── Z-index ── */
+  --z-base: 1;
+  --z-header: 5;
+  --z-panel: 10;
+  --z-overlay: 50;
+  --z-screen: 100;
+  --z-debug: 200;
+}

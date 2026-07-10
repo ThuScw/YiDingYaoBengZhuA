@@ -1,0 +1,169 @@
+/* ── Entry / Exit ── */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.85); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ── Cute entrances ── */
+@keyframes bounceIn {
+  0% { opacity: 0; transform: scale(0.3); }
+  50% { transform: scale(1.08); }
+  70% { transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes popIn {
+  0% { opacity: 0; transform: scale(0.5) rotate(-5deg); }
+  60% { transform: scale(1.12) rotate(2deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-3deg); }
+  75% { transform: rotate(3deg); }
+}
+
+/* ── Feedback ── */
+@keyframes shake {
+  0%, 100% { transform: scaleX(-1) translateX(0); }
+  10%, 50%, 90% { transform: scaleX(-1) translateX(-6px); }
+  30%, 70% { transform: scaleX(-1) translateX(6px); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: var(--glow-coral); }
+  50% { box-shadow: var(--glow-coral-strong); }
+}
+
+@keyframes pulseGlowDanger {
+  0%, 100% { box-shadow: var(--glow-danger); }
+  50% { box-shadow: 0 0 16px rgba(255, 135, 135, 0.5), 0 0 48px rgba(255, 135, 135, 0.2); }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.15); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.1); }
+  60% { transform: scale(1); }
+}
+
+/* ── Countdown ── */
+@keyframes countdownPop {
+  0% { opacity: 0.3; transform: translate(-50%, -50%) scale(0.7) scaleX(-1); }
+  30% { opacity: 1; transform: translate(-50%, -50%) scale(1.15) scaleX(-1); }
+  60% { transform: translate(-50%, -50%) scale(0.95) scaleX(-1); }
+  100% { opacity: 0.8; transform: translate(-50%, -50%) scale(1) scaleX(-1); }
+}
+
+@keyframes countdownUrgent {
+  0%, 100% { color: var(--color-danger); text-shadow: 0 0 20px rgba(255, 135, 135, 0.5); }
+  50% { color: var(--color-text-primary); text-shadow: 0 0 8px rgba(255, 107, 138, 0.3); }
+}
+
+/* ── Background ── */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes floatDelayed {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+
+@keyframes floatRotate {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-8px) rotate(3deg); }
+  66% { transform: translateY(4px) rotate(-2deg); }
+}
+
+/* ── Sparkle ── */
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1) rotate(180deg); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* ── Loading ── */
+@keyframes skeleton {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ── Particles ── */
+@keyframes particleRise {
+  0% { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(-120px) scale(0.3); }
+}
+
+@keyframes particleFloat {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(8px, -12px) rotate(90deg); }
+  50% { transform: translate(-4px, -24px) rotate(180deg); }
+  75% { transform: translate(-12px, -8px) rotate(270deg); }
+}
+
+@keyframes confettiFall {
+  0% { opacity: 1; transform: translateY(-10px) rotate(0deg) scale(1); }
+  100% { opacity: 0; transform: translateY(110vh) rotate(720deg) scale(0.3); }
+}
+
+/* ── Progress bar ── */
+@keyframes progressPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    animation-delay: 0.01ms !important;
+  }
+}

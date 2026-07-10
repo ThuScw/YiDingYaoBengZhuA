@@ -1,0 +1,52 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100dvh;
+  width: 100vw;
+  overflow: hidden;
+  background: linear-gradient(
+    160deg,
+    #fff5f5 0%,
+    #fff0e8 25%,
+    #fef5e7 50%,
+    #fce4ec 75%,
+    #fff5f5 100%
+  );
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+.layout {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  overflow: hidden;
+}
+
+.layout > :first-child {
+  flex: 0 0 40%;
+  max-width: 40%;
+}
+
+.layout > :nth-child(2) {
+  flex: 0 0 60%;
+  max-width: 60%;
+}
+
+@media (max-width: 768px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .layout > :first-child {
+    flex: 0 0 35%;
+    max-width: 100%;
+  }
+
+  .layout > :nth-child(2) {
+    flex: 0 0 65%;
+    max-width: 100%;
+  }
+}

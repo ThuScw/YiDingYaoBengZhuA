@@ -1,0 +1,53 @@
+.wrapper {
+  position: relative;
+  display: inline-block;
+  padding: 6px;
+}
+
+.star {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 0.85rem;
+  color: #ffa94d;
+  pointer-events: none;
+  animation: orbitStar 3s linear infinite;
+  transform-origin: center center;
+}
+
+.star:nth-child(odd) {
+  color: #ff6b8a;
+  animation-duration: 3.5s;
+  animation-direction: reverse;
+}
+
+.star:nth-child(3n) {
+  color: #ffd43b;
+  animation-duration: 4s;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes orbitStar {
+  0% {
+    transform: translate(-50%, -50%) rotate(var(--angle)) translateX(calc(100% + 24px)) rotate(0deg);
+    opacity: 0.4;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(var(--angle)) translateX(calc(100% + 0px)) rotate(180deg);
+    opacity: 0.6;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(var(--angle)) translateX(calc(100% + 24px)) rotate(360deg);
+    opacity: 0.4;
+  }
+}

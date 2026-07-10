@@ -1,0 +1,63 @@
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  width: 100%;
+  max-width: 480px;
+  padding: var(--space-2) 0;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.streak {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 4px 14px;
+  border-radius: var(--radius-full);
+  background: var(--color-accent-peach-dim);
+  border: 1px solid rgba(255, 169, 77, 0.25);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-accent-peach);
+}
+
+.streakIcon {
+  font-size: 0.9rem;
+}
+
+.streakText {
+  white-space: nowrap;
+}
+
+.progress {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex: 1;
+  max-width: 180px;
+}
+
+.progressLabel {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.progressTrack {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--color-accent-coral), var(--color-accent-peach), var(--color-accent-lavender));
+  transition: width var(--transition-normal);
+  box-shadow: 0 0 6px rgba(255, 107, 138, 0.25);
+}

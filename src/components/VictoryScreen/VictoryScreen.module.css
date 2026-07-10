@@ -1,0 +1,233 @@
+.screen {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-screen);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    160deg,
+    #fff5f5 0%,
+    #fef5e7 50%,
+    #fce4ec 100%
+  );
+  overflow: hidden;
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* ── Ambient orbs ── */
+.bgOrb1,
+.bgOrb2,
+.bgOrb3 {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.bgOrb1 {
+  width: 350px;
+  height: 350px;
+  top: -12%;
+  left: 28%;
+  background: radial-gradient(circle, rgba(255, 215, 64, 0.12), transparent 70%);
+  animation: float 5s ease-in-out infinite;
+}
+
+.bgOrb2 {
+  width: 280px;
+  height: 280px;
+  bottom: -8%;
+  right: 22%;
+  background: radial-gradient(circle, rgba(99, 230, 190, 0.12), transparent 70%);
+  animation: floatDelayed 6s ease-in-out infinite;
+}
+
+.bgOrb3 {
+  width: 200px;
+  height: 200px;
+  top: 50%;
+  left: 12%;
+  background: radial-gradient(circle, rgba(177, 151, 252, 0.1), transparent 70%);
+  animation: float 7s ease-in-out infinite;
+}
+
+/* ── Confetti particles ── */
+.particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  bottom: -10px;
+  border-radius: 2px;
+  animation: confettiFall 3s ease-out infinite;
+}
+
+/* Rainbow confetti shapes */
+.particle:nth-child(5n) {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ff6b8a;
+  box-shadow: 0 0 6px #ff6b8a;
+}
+
+.particle:nth-child(5n+1) {
+  width: 8px;
+  height: 4px;
+  border-radius: 2px;
+  background: #ffa94d;
+  box-shadow: 0 0 6px #ffa94d;
+}
+
+.particle:nth-child(5n+2) {
+  width: 4px;
+  height: 8px;
+  border-radius: 2px;
+  background: #ffd43b;
+  box-shadow: 0 0 6px #ffd43b;
+}
+
+.particle:nth-child(5n+3) {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #b197fc;
+  box-shadow: 0 0 6px #b197fc;
+}
+
+.particle:nth-child(5n+4) {
+  width: 7px;
+  height: 3px;
+  border-radius: 2px;
+  background: #63e6be;
+  box-shadow: 0 0 6px #63e6be;
+}
+
+/* ── Card ── */
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-5);
+  padding: var(--space-7) var(--space-8);
+  border-radius: var(--radius-xl);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid rgba(255, 215, 64, 0.2);
+  box-shadow: var(--glass-shadow), var(--glow-peach);
+  text-align: center;
+  animation: bounceIn 0.7s var(--ease-bounce);
+  max-width: 440px;
+  width: 90%;
+}
+
+.trophy {
+  font-size: 5rem;
+  animation: float 2.5s ease-in-out infinite;
+  filter: drop-shadow(0 0 24px rgba(255, 215, 64, 0.35));
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #ffa94d, #ffd43b, #ff6b8a);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 3s ease infinite;
+  margin: 0;
+}
+
+.description {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.count {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--color-accent-coral);
+  font-size: 1.3rem;
+}
+
+.playAgainBtn {
+  padding: 16px 48px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--color-accent-peach), #ff8e7a);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  box-shadow: 0 4px 24px rgba(255, 169, 77, 0.35);
+  transition: transform 0.25s var(--ease-bounce), box-shadow var(--transition-fast);
+}
+
+.playAgainBtn:hover {
+  transform: scale(1.06);
+  box-shadow: 0 6px 32px rgba(255, 169, 77, 0.5);
+}
+
+.playAgainBtn:active {
+  transform: scale(0.96);
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.lbBtn {
+  padding: 8px 24px;
+  border-radius: var(--radius-full);
+  background: transparent;
+  color: var(--color-accent-peach);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  border: 1px solid rgba(255, 169, 77, 0.3);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.lbBtn:hover {
+  background: var(--color-accent-peach-dim);
+  border-color: rgba(255, 169, 77, 0.5);
+  transform: scale(1.04);
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: var(--space-6) var(--space-5);
+    gap: var(--space-4);
+  }
+
+  .trophy {
+    font-size: 3.5rem;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .description {
+    font-size: 0.95rem;
+  }
+
+  .playAgainBtn {
+    padding: 14px 36px;
+    font-size: 1.05rem;
+  }
+}
