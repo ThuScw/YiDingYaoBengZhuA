@@ -2,6 +2,7 @@ import { useEffect, useRef, useCallback } from 'react';
 import Webcam from 'react-webcam';
 import CountdownTimer from '../CountdownTimer/CountdownTimer';
 import DebugOverlay from '../DebugOverlay/DebugOverlay';
+import StatusBar from '../StatusBar/StatusBar';
 import styles from './CameraPanel.module.css';
 
 export default function CameraPanel({
@@ -13,6 +14,9 @@ export default function CameraPanel({
   isTimeUp,
   smileScore,
   isLoading,
+  streak,
+  remainingCount,
+  totalCount,
   onStart,
   onAdvance,
 }) {
@@ -50,57 +54,72 @@ export default function CameraPanel({
   const showAdvanceBtn = gameState === 'playing' && isTimeUp;
   const showButton = gameState === 'idle' || gameState === 'fail' || gameState === 'victory';
   const isFail = gameState === 'fail';
+  const showStatus = gameState !== 'victory' && gameState !== 'idle' && gameState !== 'fail';
 
   return (
     <div className={styles.panel}>
-      <div className={`${styles.webcamWrapper} ${isFail ? styles.fail : isPlaying ? styles.playing : ''}`}>
-        <Webcam
-          audio={false}
-          ref={webcamRef}
-          onUserMedia={onUserMedia}
-          screenshotFormat="image/jpeg"
-          className={styles.webcam}
-          videoConstraints={{
-            width: 640,
-            height: 480,
-            facingMode: 'user',
-          }}
+      <div className={styles.header}>
+        <h1 className={styles.title}>
+          <span className={styles.titleAccent}>绷住</span>大挑战
+        </h1>
+        <StatusBar
+          streak={streak}
+          remainingCount={remainingCount}
+          totalCount={totalCount}
+          visible={showStatus}
         />
-        <canvas ref={canvasRef} className={styles.canvas} />
+      </div>
 
-        {isLoading && (
-          <div className={styles.loadingBadge} aria-label="面部识别初始化中">
-            <span className={styles.loadingDot} />
-            面部识别初始化中...
-          </div>
-        )}
+      <div className={styles.cameraArea}>
+        <div className={`${styles.webcamWrapper} ${isFail ? styles.fail : isPlaying ? styles.playing : ''}`}>
+          <Webcam
+            audio={false}
+            ref={webcamRef}
+            onUserMedia={onUserMedia}
+            screenshotFormat="image/jpeg"
+            className={styles.webcam}
+            videoConstraints={{
+              width: 640,
+              height: 480,
+              facingMode: 'user',
+            }}
+          />
+          <canvas ref={canvasRef} className={styles.canvas} />
 
-        <DebugOverlay smileScore={smileScore} />
-        <CountdownTimer timeLeft={timeLeft} visible={showTimer} />
+          {isLoading && (
+            <div className={styles.loadingBadge} aria-label="面部识别初始化中">
+              <span className={styles.loadingDot} />
+              面部识别初始化中...
+            </div>
+          )}
 
-        {showButton && (
-          <button
-            className={styles.startBtn}
-            onClick={onStart}
-            aria-label={gameState === 'idle' ? '开始挑战' : '再来一次'}
-          >
-            <span className={styles.btnContent}>
-              {gameState === 'idle' ? '开始挑战' : '再来一次'}
-            </span>
-            <span className={styles.btnHint}>Space</span>
-          </button>
-        )}
+          <DebugOverlay smileScore={smileScore} />
+          <CountdownTimer timeLeft={timeLeft} visible={showTimer} />
 
-        {showAdvanceBtn && (
-          <button
-            className={styles.advanceBtn}
-            onClick={onAdvance}
-            aria-label="绷住了"
-          >
-            <span className={styles.btnContent}>绷住了！</span>
-            <span className={styles.btnHint}>Space</span>
-          </button>
-        )}
+          {showButton && (
+            <button
+              className={styles.startBtn}
+              onClick={onStart}
+              aria-label={gameState === 'idle' ? '开始挑战' : '再来一次'}
+            >
+              <span className={styles.btnContent}>
+                {gameState === 'idle' ? '开始挑战' : '再来一次'}
+              </span>
+              <span className={styles.btnHint}>Space</span>
+            </button>
+          )}
+
+          {showAdvanceBtn && (
+            <button
+              className={styles.advanceBtn}
+              onClick={onAdvance}
+              aria-label="绷住了"
+            >
+              <span className={styles.btnContent}>绷住了！</span>
+              <span className={styles.btnHint}>Space</span>
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );

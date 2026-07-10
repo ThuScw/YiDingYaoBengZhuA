@@ -108,6 +108,9 @@ export default function GameContainer() {
                 isTimeUp={isTimeUp}
                 smileScore={smileScore}
                 isLoading={isLoading}
+                streak={streak}
+                remainingCount={remainingCount}
+                totalCount={totalCount}
                 onStart={handleStart}
                 onAdvance={handleAdvance}
               />
@@ -120,9 +123,6 @@ export default function GameContainer() {
                 <ContentPanel
                   gameState={gameState}
                   currentMaterial={currentMaterial}
-                  streak={streak}
-                  remainingCount={remainingCount}
-                  totalCount={totalCount}
                   videoError={videoError}
                   videoRef={videoRef}
                   isTimeUp={isTimeUp}
