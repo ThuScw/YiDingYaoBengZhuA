@@ -1,7 +1,7 @@
 import styles from './DebugOverlay.module.css';
 
 export default function DebugOverlay({ smileScore }) {
-  const level = smileScore > 25 ? 'danger' : smileScore > 10 ? 'warn' : 'safe';
+  const level = smileScore > 20 ? 'danger' : smileScore > 0 ? 'warn' : 'safe';
 
   return (
     <div className={styles.overlay} aria-hidden="true">

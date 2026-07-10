@@ -201,6 +201,33 @@
   color: rgba(255, 255, 255, 0.85);
 }
 
+@media (max-width: 480px) {
+  .header {
+    padding: var(--space-2) var(--space-3) 0;
+    gap: var(--space-1);
+  }
+
+  .title {
+    font-size: 1.05rem;
+  }
+
+  .cameraArea {
+    padding: var(--space-2);
+  }
+
+  .startBtn {
+    padding: 10px 24px;
+    font-size: 0.95rem;
+    bottom: var(--space-3);
+  }
+
+  .advanceBtn {
+    padding: 10px 24px;
+    font-size: 0.95rem;
+    bottom: var(--space-3);
+  }
+}
+
 @media (max-width: 768px) {
   .webcamWrapper {
     width: 92%;

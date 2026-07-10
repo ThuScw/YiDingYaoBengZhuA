@@ -18,7 +18,7 @@ export default function StartScreen({ onStart, onLeaderboard }) {
         <p className={styles.subtitle}>
           面对搞笑内容保持不笑
           <br />
-          坚持 <span className={styles.highlight}>7秒</span> 即为胜利
+          坚持 <span className={styles.highlight}>5秒</span> 即为胜利
         </p>
 
         <button className={styles.startBtn} onClick={onStart} aria-label="开始挑战">

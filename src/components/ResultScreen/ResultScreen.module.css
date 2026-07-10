@@ -119,6 +119,33 @@
   transform: scale(1.04);
 }
 
+@media (max-width: 480px) {
+  .overlay {
+    overflow-y: auto;
+    align-items: flex-start;
+    padding: var(--space-4) 0;
+  }
+
+  .card {
+    padding: var(--space-4) var(--space-3);
+    gap: var(--space-2);
+    max-width: 340px;
+  }
+
+  .emoji {
+    font-size: 2.5rem;
+  }
+
+  .message {
+    font-size: 1rem;
+  }
+
+  .retryBtn {
+    padding: 12px 28px;
+    font-size: 1rem;
+  }
+}
+
 @media (max-width: 768px) {
   .card {
     padding: var(--space-5);

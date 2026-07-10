@@ -13,9 +13,11 @@ export default function GameIntro() {
           <div className={styles.sectionIcon}>🎯</div>
           <h2 className={styles.sectionTitle}>游戏目标</h2>
           <p className={styles.sectionText}>
-            面对各种搞笑内容，保持面无表情，坚持 <strong>7秒</strong> 即为胜利！
+            面对各种搞笑内容，保持面无表情，坚持 <strong>5秒</strong> 即为胜利！
           </p>
         </div>
+
+
 
         <div className={styles.section}>
           <div className={styles.sectionIcon}>📹</div>

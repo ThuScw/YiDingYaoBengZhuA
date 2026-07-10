@@ -181,6 +181,38 @@
   transform: scale(1.04);
 }
 
+@media (max-width: 480px) {
+  .screen {
+    overflow-y: auto;
+    align-items: flex-start;
+    padding: var(--space-4) 0;
+  }
+
+  .card {
+    padding: var(--space-5) var(--space-4);
+    gap: var(--space-3);
+    max-width: 340px;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .startBtn {
+    padding: 12px 32px;
+    font-size: 1rem;
+  }
+
+  .leaderboardBtn {
+    padding: 7px 20px;
+    font-size: 0.85rem;
+  }
+}
+
 @media (max-width: 768px) {
   .card {
     padding: var(--space-6) var(--space-5);

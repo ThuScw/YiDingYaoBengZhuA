@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState, useCallback } from 'react';
 
-const BREAK_THRESHOLD = 30;
-const BREAK_DURATION = 700; // ms — 微笑指数 > 30 且持续 0.7s 才算破绷
+const BREAK_THRESHOLD = 20;
+const BREAK_DURATION = 300; // ms — 微笑指数 > 20 且持续 0.3s 才算破绷
 
 export function useFaceDetection({ webcamRef, canvasRef, gameStateRef, onSmileBreak, enabled }) {
   const faceMeshRef = useRef(null);

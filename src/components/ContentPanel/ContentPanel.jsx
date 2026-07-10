@@ -69,7 +69,7 @@ export default function ContentPanel({
         {showAdvanceHint && (
           <div className={styles.advanceHint}>
             <span className={styles.advanceHintIcon}>✅</span>
-            <span>7秒已到，绷住了就点击左侧按钮晋级</span>
+            <span>5秒已到，绷住了就点击左侧按钮晋级</span>
           </div>
         )}
 

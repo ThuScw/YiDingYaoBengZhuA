@@ -208,3 +208,60 @@
   font-family: var(--font-body);
   font-size: 0.82rem;
 }
+
+@media (max-width: 480px) {
+  .embeddedPanel {
+    overflow-y: auto;
+  }
+
+  .panel {
+    padding: var(--space-3);
+  }
+
+  .header {
+    margin-bottom: var(--space-3);
+  }
+
+  .title {
+    font-size: 1.15rem;
+  }
+
+  .listHeader {
+    font-size: 0.68rem;
+    padding: 8px 0;
+  }
+
+  .row {
+    padding: 10px 0;
+    font-size: 0.85rem;
+  }
+
+  .colStreak {
+    font-size: 0.95rem;
+  }
+
+  .colTime {
+    font-size: 0.75rem;
+  }
+
+  .colRank {
+    font-size: 0.85rem;
+  }
+
+  .rank1 {
+    font-size: 1.05rem;
+  }
+
+  .rank2 {
+    font-size: 1rem;
+  }
+
+  .rank3 {
+    font-size: 0.95rem;
+  }
+
+  .noRecord {
+    font-size: 0.78rem;
+    padding: var(--space-2);
+  }
+}

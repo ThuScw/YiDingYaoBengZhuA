@@ -38,7 +38,7 @@ export function useGameState({ webcamRef, canvasRef, cameraAllowed }) {
 
   const isTimerRunning = gameState === 'playing';
   const { timeLeft, isTimeUp, reset: resetTimer } = useTimer({
-    duration: 7,
+    duration: 5,
     isRunning: isTimerRunning,
   });
 
@@ -87,9 +87,9 @@ export function useGameState({ webcamRef, canvasRef, cameraAllowed }) {
     setBestStreak((prev) => Math.max(prev, newStreak));
 
     let msg;
-    if (avgStruggle < 1.5) {
+    if (avgStruggle < -10.0) {
       msg = `😎 您已连续绷住 ${newStreak} 局，正在进入下一局...`;
-    } else if (avgStruggle < 3.0) {
+    } else if (avgStruggle < 20.0) {
       msg = `😅 您已连续绷住 ${newStreak} 局，正在进入下一局...`;
     } else {
       msg = `🥵 您已连续绷住 ${newStreak} 局，正在进入下一局...`;
