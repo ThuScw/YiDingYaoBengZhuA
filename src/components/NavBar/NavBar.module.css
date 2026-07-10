@@ -1,7 +1,8 @@
 .nav {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: var(--space-6);
   height: 56px;
   padding: 0 var(--space-6);
   background: var(--glass-bg);

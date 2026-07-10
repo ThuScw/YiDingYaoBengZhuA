@@ -11,6 +11,32 @@ export function useLeaderboard() {
 
   const submitScore = useCallback(async (uid, streak, totalMaterials) => {
     if (!supabase || !uid || streak === 0) return { error: null };
+
+    // 先查询该用户的最高分记录
+    const { data: existing } = await supabase
+      .from('scores')
+      .select('id, streak')
+      .eq('uid', uid)
+      .order('streak', { ascending: false })
+      .limit(1);
+
+    const currentBest = existing?.[0]?.streak ?? null;
+
+    if (currentBest !== null && streak > currentBest) {
+      // 新高分：更新已有的最高分记录（避免 INSERT 被 RLS 策略拦截）
+      const { error } = await supabase
+        .from('scores')
+        .update({ streak, total_materials: totalMaterials })
+        .eq('id', existing[0].id);
+      return { error };
+    }
+
+    if (currentBest !== null) {
+      // 未超越最高分：不插入，直接返回
+      return { error: null };
+    }
+
+    // 用户无历史记录：插入首条
     const { error } = await supabase
       .from('scores')
       .insert({ uid, streak, total_materials: totalMaterials });
